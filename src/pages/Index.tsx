@@ -15,8 +15,11 @@ const Index = () => {
   const [selectedDonatePackage, setSelectedDonatePackage] = useState<string | null>(null);
 
   const openDonateForm = (pkgId: string) => {
+    console.log('Opening donate form for:', pkgId);
+    const newCaptcha = Math.floor(Math.random() * 10) + 1;
+    console.log('New captcha answer:', newCaptcha);
     setSelectedDonatePackage(pkgId);
-    setCaptchaAnswer(Math.floor(Math.random() * 10) + 1);
+    setCaptchaAnswer(newCaptcha);
     setCaptchaValue('');
   };
 
