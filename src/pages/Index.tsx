@@ -68,7 +68,7 @@ const Index = () => {
   const faqItems = [
     {
       question: 'Как зайти на сервер?',
-      answer: 'Откройте Minecraft, нажмите "Сетевая игра" и добавьте IP: play.yourserver.net'
+      answer: 'Откройте Minecraft, нажмите "Сетевая игра" и добавьте IP: radybaucraft.ru'
     },
     {
       question: 'Какая версия Minecraft поддерживается?',
@@ -130,7 +130,7 @@ const Index = () => {
               <div className="w-10 h-10 bg-primary rounded flex items-center justify-center text-2xl animate-glow">
                 ⛏️
               </div>
-              <h1 className="text-lg md:text-xl font-heading text-primary">MC SHOP</h1>
+              <h1 className="text-lg md:text-xl font-heading text-primary">RADYBAUCRAFT</h1>
             </div>
             <div className="flex gap-2 md:gap-4">
               {['home', 'donate', 'news', 'faq'].map((section) => (
@@ -167,7 +167,7 @@ const Index = () => {
             </div>
             <div className="flex items-center gap-2 bg-card px-6 py-3 rounded border border-border">
               <Icon name="Server" className="text-secondary" size={24} />
-              <span className="text-lg">IP: <span className="text-secondary font-bold">play.server.net</span></span>
+              <span className="text-lg">IP: <span className="text-secondary font-bold">radybaucraft.ru</span></span>
             </div>
           </div>
           <div className="pt-8">
@@ -294,7 +294,7 @@ const Index = () => {
 
       <footer className="py-8 border-t border-border">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>© 2024 MC SHOP. Все права защищены.</p>
+          <p>© 2024 RADYBAUCRAFT. Все права защищены.</p>
           <div className="flex justify-center gap-4 mt-4">
             <Button variant="ghost" size="sm">
               <Icon name="MessageCircle" size={20} />
