@@ -15,12 +15,14 @@ const Index = () => {
   const [selectedDonatePackage, setSelectedDonatePackage] = useState<string | null>(null);
 
   const openDonateForm = (pkgId: string) => {
-    console.log('Opening donate form for:', pkgId);
-    const newCaptcha = Math.floor(Math.random() * 10) + 1;
-    console.log('New captcha answer:', newCaptcha);
-    setSelectedDonatePackage(pkgId);
-    setCaptchaAnswer(newCaptcha);
-    setCaptchaValue('');
+    if (selectedDonatePackage === pkgId) {
+      setSelectedDonatePackage(null);
+    } else {
+      const newCaptcha = Math.floor(Math.random() * 10) + 1;
+      setSelectedDonatePackage(pkgId);
+      setCaptchaAnswer(newCaptcha);
+      setCaptchaValue('');
+    }
   };
 
   const donatePackages = [
@@ -217,10 +219,10 @@ const Index = () => {
                     className="w-full" 
                     onClick={() => openDonateForm(pkg.id)}
                   >
-                    Купить
+                    {selectedDonatePackage === pkg.id ? 'Закрыть' : 'Купить'}
                   </Button>
                   
-                  {selectedDonatePackage === pkg.id && (
+                  {selectedDonatePackage === pkg.id && captchaAnswer > 0 && (
                     <div className="mt-4 p-4 bg-muted rounded animate-fade-in space-y-4">
                       <div>
                         <Label htmlFor="nickname">Никнейм в игре</Label>
