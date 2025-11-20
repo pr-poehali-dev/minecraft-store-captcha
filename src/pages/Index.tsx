@@ -215,40 +215,50 @@ const Index = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button 
-                    className="w-full" 
-                    onClick={() => openDonateForm(pkg.id)}
-                  >
-                    {selectedDonatePackage === pkg.id ? 'Закрыть' : 'Купить'}
-                  </Button>
-                  
-                  {selectedDonatePackage === pkg.id && captchaAnswer > 0 && (
-                    <div className="mt-4 p-4 bg-muted rounded animate-fade-in space-y-4">
-                      <div>
-                        <Label htmlFor="nickname">Никнейм в игре</Label>
-                        <Input id="nickname" placeholder="Steve" className="mt-1" />
+                  {selectedDonatePackage !== pkg.id ? (
+                    <Button 
+                      className="w-full" 
+                      onClick={() => openDonateForm(pkg.id)}
+                    >
+                      Купить
+                    </Button>
+                  ) : (
+                    <>
+                      <div className="mt-4 p-4 bg-background rounded border-2 border-primary space-y-4">
+                        <p className="text-sm text-primary font-bold">✅ Форма открыта</p>
+                        <div>
+                          <Label htmlFor={`nickname-${pkg.id}`}>Никнейм в игре</Label>
+                          <Input id={`nickname-${pkg.id}`} placeholder="Steve" className="mt-1" />
+                        </div>
+                        <div>
+                          <Label htmlFor={`email-${pkg.id}`}>Email</Label>
+                          <Input id={`email-${pkg.id}`} type="email" placeholder="player@example.com" className="mt-1" />
+                        </div>
+                        <div className="bg-card p-4 rounded border border-border">
+                          <Label className="text-accent font-bold text-base">🤖 Капча: Сколько будет {captchaAnswer} + 0?</Label>
+                          <Input
+                            value={captchaValue}
+                            onChange={(e) => setCaptchaValue(e.target.value)}
+                            placeholder="Ваш ответ"
+                            className="mt-2"
+                            type="number"
+                          />
+                        </div>
+                        <Button 
+                          className="w-full bg-primary hover:bg-primary/80"
+                          onClick={() => handleDonateSubmit(pkg)}
+                        >
+                          Перейти к оплате
+                        </Button>
+                        <Button 
+                          variant="outline"
+                          className="w-full" 
+                          onClick={() => setSelectedDonatePackage(null)}
+                        >
+                          Закрыть
+                        </Button>
                       </div>
-                      <div>
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" placeholder="player@example.com" className="mt-1" />
-                      </div>
-                      <div className="bg-card p-4 rounded border border-border">
-                        <Label className="text-accent font-bold">🤖 Капча: Сколько будет {captchaAnswer} + 0?</Label>
-                        <Input
-                          value={captchaValue}
-                          onChange={(e) => setCaptchaValue(e.target.value)}
-                          placeholder="Ваш ответ"
-                          className="mt-2"
-                          type="number"
-                        />
-                      </div>
-                      <Button 
-                        className="w-full bg-primary hover:bg-primary/80"
-                        onClick={() => handleDonateSubmit(pkg)}
-                      >
-                        Перейти к оплате
-                      </Button>
-                    </div>
+                    </>
                   )}
                 </CardContent>
               </Card>
