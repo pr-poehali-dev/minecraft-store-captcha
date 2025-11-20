@@ -11,8 +11,14 @@ const Index = () => {
   const { toast } = useToast();
   const [activeSection, setActiveSection] = useState('home');
   const [captchaValue, setCaptchaValue] = useState('');
-  const [captchaAnswer] = useState(Math.floor(Math.random() * 10) + 1);
+  const [captchaAnswer, setCaptchaAnswer] = useState(0);
   const [selectedDonatePackage, setSelectedDonatePackage] = useState<string | null>(null);
+
+  const openDonateForm = (pkgId: string) => {
+    setSelectedDonatePackage(pkgId);
+    setCaptchaAnswer(Math.floor(Math.random() * 10) + 1);
+    setCaptchaValue('');
+  };
 
   const donatePackages = [
     {
@@ -206,7 +212,7 @@ const Index = () => {
                   </ul>
                   <Button 
                     className="w-full" 
-                    onClick={() => setSelectedDonatePackage(pkg.id)}
+                    onClick={() => openDonateForm(pkg.id)}
                   >
                     Купить
                   </Button>
