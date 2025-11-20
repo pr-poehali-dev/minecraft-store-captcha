@@ -197,7 +197,7 @@ const Index = () => {
           </h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {donatePackages.map((pkg) => (
-              <Card key={pkg.id} className="relative overflow-hidden group hover:scale-105 transition-transform duration-300">
+              <Card key={pkg.id} className="relative overflow-hidden group">
                 <div className={`absolute inset-0 bg-gradient-to-br ${pkg.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
                 <CardHeader>
                   <div className="flex justify-between items-start">
